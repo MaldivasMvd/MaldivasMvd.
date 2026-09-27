@@ -25,6 +25,13 @@
       .columna h2 { font-size:17px; }
       .pago { font-size:13px; padding:14px 5px; }
     }
+  
+    /* Colores identificativos de cada método de pago */
+    .transferencia { background:linear-gradient(90deg,rgba(30,110,200,.30),rgba(30,110,200,.08)) !important; border-color:#4da3ff !important; }
+    .debito { background:linear-gradient(90deg,rgba(0,170,210,.30),rgba(0,170,210,.08)) !important; border-color:#37d5f5 !important; }
+    .credito { background:linear-gradient(90deg,rgba(125,75,190,.32),rgba(125,75,190,.08)) !important; border-color:#a879e8 !important; }
+    .efectivo { background:linear-gradient(90deg,rgba(40,150,75,.32),rgba(40,150,75,.08)) !important; border-color:#54c878 !important; }
+    .mercadopago { background:#e0b82f !important; color:#000 !important; border-color:#e0b82f !important; }
   </style>
 </head>
 <body>
@@ -35,15 +42,15 @@
     <div class="columnas">
       <div class="columna">
         <h2>🏪 EN EL LOCAL</h2>
-        <div class="pago">🏦 TRANSFERENCIA</div>
-        <div class="pago">💳 DÉBITO</div>
-        <div class="pago">💳 CRÉDITO</div>
-        <div class="pago">💵 EFECTIVO</div>
+        <div class="pago transferencia">🏦 TRANSFERENCIA</div>
+        <div class="pago debito">💳 DÉBITO</div>
+        <div class="pago credito">💳 CRÉDITO</div>
+        <div class="pago efectivo">💵 EFECTIVO</div>
       </div>
 
       <div class="columna">
         <h2>🌐 POR WEB</h2>
-        <a href="https://link.mercadopago.com.uy/zorr" target="_blank" rel="noopener noreferrer" class="pago mercadopago">🟡 MERCADO PAGO</a>
+        <a href="https://link.mercadopago.com.uy/zorr" target="_blank" rel="noopener noreferrer" class="pago mercadopago mercadopago">🟡 MERCADO PAGO</a>
       </div>
     </div>
 
