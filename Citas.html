@@ -20,6 +20,8 @@
     .servicio.activo .detalle { max-height:220px; opacity:1; padding:0 22px 22px; }
     .precio { color:#d4af37; font-size:21px; font-weight:bold; margin-bottom:10px; }
     .descripcion { color:#ddd; line-height:1.5; margin:0; }
+    .comprar { display:inline-block; margin-top:18px; padding:12px 24px; background:#d4af37; color:#000; text-decoration:none; border-radius:25px; font-weight:bold; transition:.2s; }
+    .comprar:hover { background:white; transform:scale(1.04); }
     .boton { display:inline-block; margin:20px; padding:15px 30px; background:#d4af37; color:#000; text-decoration:none; border-radius:10px; font-weight:bold; }
   </style>
 </head>
@@ -34,32 +36,32 @@
   <div class="servicios">
     <div class="servicio" onclick="abrir(this)">
       <div class="servicio-titulo"><span>Brushing</span><span class="flecha">⌄</span></div>
-      <div class="detalle"><div class="precio">$500</div><p class="descripcion">Peinado con secador para dar forma, movimiento y un acabado prolijo al cabello.</p></div>
+      <div class="detalle"><div class="precio">$500</div><p class="descripcion">Peinado con secador para dar forma, movimiento y un acabado prolijo al cabello.</p><a class="comprar" href="Servicio.html?servicio=brushing" onclick="event.stopPropagation()">COMPRAR</a></div>
     </div>
 
     <div class="servicio" onclick="abrir(this)">
       <div class="servicio-titulo"><span>Corte</span><span class="flecha">⌄</span></div>
-      <div class="detalle"><div class="precio">$300</div><p class="descripcion">Corte personalizado para renovar tu estilo y darle forma a tu cabello.</p></div>
+      <div class="detalle"><div class="precio">$300</div><p class="descripcion">Corte personalizado para renovar tu estilo y darle forma a tu cabello.</p><a class="comprar" href="Servicio.html?servicio=corte" onclick="event.stopPropagation()">COMPRAR</a></div>
     </div>
 
     <div class="servicio" onclick="abrir(this)">
       <div class="servicio-titulo"><span>Lavado</span><span class="flecha">⌄</span></div>
-      <div class="detalle"><div class="precio">$400</div><p class="descripcion">Lavado para limpiar y refrescar el cabello antes de tu peinado o tratamiento.</p></div>
+      <div class="detalle"><div class="precio">$400</div><p class="descripcion">Lavado para limpiar y refrescar el cabello antes de tu peinado o tratamiento.</p><a class="comprar" href="Servicio.html?servicio=lavado" onclick="event.stopPropagation()">COMPRAR</a></div>
     </div>
 
     <div class="servicio" onclick="abrir(this)">
       <div class="servicio-titulo"><span>Secado</span><span class="flecha">⌄</span></div>
-      <div class="detalle"><div class="precio">$450</div><p class="descripcion">Secado profesional para dejar el cabello prolijo y listo para lucir.</p></div>
+      <div class="detalle"><div class="precio">$450</div><p class="descripcion">Secado profesional para dejar el cabello prolijo y listo para lucir.</p><a class="comprar" href="Servicio.html?servicio=secado" onclick="event.stopPropagation()">COMPRAR</a></div>
     </div>
 
     <div class="servicio" onclick="abrir(this)">
       <div class="servicio-titulo"><span>Alisado</span><span class="flecha">⌄</span></div>
-      <div class="detalle"><div class="precio">$1500</div><p class="descripcion">Tratamiento para lograr un cabello más liso, manejable y con acabado suave.</p></div>
+      <div class="detalle"><div class="precio">$1500</div><p class="descripcion">Tratamiento para lograr un cabello más liso, manejable y con acabado suave.</p><a class="comprar" href="Servicio.html?servicio=alisado" onclick="event.stopPropagation()">COMPRAR</a></div>
     </div>
 
     <div class="servicio" onclick="abrir(this)">
       <div class="servicio-titulo"><span>Color</span><span class="flecha">⌄</span></div>
-      <div class="detalle"><div class="precio">$1800</div><p class="descripcion">Servicio de coloración para renovar, cambiar o realzar el tono de tu cabello.</p></div>
+      <div class="detalle"><div class="precio">$1800</div><p class="descripcion">Servicio de coloración para renovar, cambiar o realzar el tono de tu cabello.</p><a class="comprar" href="Servicio.html?servicio=color" onclick="event.stopPropagation()">COMPRAR</a></div>
     </div>
   </div>
 
