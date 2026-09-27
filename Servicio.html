@@ -7,39 +7,64 @@
   <style>
     * { margin:0; padding:0; box-sizing:border-box; font-family:Arial,sans-serif; }
     body { background:#080808; color:white; min-height:100vh; display:flex; justify-content:center; align-items:center; text-align:center; padding:25px; }
-    .contenedor { width:100%; max-width:500px; background:#111; border:1px solid #6f5b1d; border-radius:20px; padding:40px 25px; }
-    h1 { color:#d4af37; font-size:35px; margin-bottom:30px; }
-    .dato { font-size:20px; margin:20px 0; }
-    .gold { color:#d4af37; font-weight:bold; }
-    .boton { display:block; width:100%; padding:16px; margin-top:18px; border-radius:30px; background:#d4af37; color:#000; text-decoration:none; font-weight:bold; font-size:16px; }
-    .boton:hover { background:white; }
-    .volver { display:inline-block; margin-top:25px; color:#d4af37; text-decoration:none; }
+    .contenedor { width:100%; max-width:850px; background:#111; border:1px solid #6f5b1d; border-radius:20px; padding:40px 25px; }
+    h1 { color:#d4af37; font-size:38px; margin-bottom:8px; }
+    .precio { color:white; font-size:24px; margin-bottom:35px; }
+    .columnas { display:grid; grid-template-columns:1fr 1fr; gap:25px; }
+    .columna { background:#181818; border:1px solid #333; border-radius:18px; padding:25px 20px; }
+    .columna h2 { color:#d4af37; font-size:22px; margin-bottom:25px; }
+    .pago { display:block; width:100%; padding:16px 10px; margin:13px 0; border:1px solid #d4af37; border-radius:30px; background:#111; color:#d4af37; text-decoration:none; font-weight:bold; font-size:16px; }
+    .pago:hover { background:#d4af37; color:#000; }
+    .mercadopago { background:#d4af37; color:#000; }
+    .mercadopago:hover { background:white; }
+    .volver { display:inline-block; margin-top:30px; color:#d4af37; text-decoration:none; }
+    @media(max-width:600px) {
+      .columnas { grid-template-columns:1fr 1fr; gap:10px; }
+      .contenedor { padding:30px 12px; }
+      .columna { padding:20px 10px; }
+      .columna h2 { font-size:17px; }
+      .pago { font-size:13px; padding:14px 5px; }
+    }
   </style>
 </head>
 <body>
   <div class="contenedor">
     <h1 id="servicio">Servicio</h1>
-    <div class="dato">
-      💰 <span class="gold">Precio:</span>
-      <span id="precio">$0</span>
+    <div class="precio" id="precio">$0</div>
+
+    <div class="columnas">
+      <div class="columna">
+        <h2>🏪 EN EL LOCAL</h2>
+        <div class="pago">🏦 TRANSFERENCIA</div>
+        <div class="pago">💳 DÉBITO</div>
+        <div class="pago">💳 CRÉDITO</div>
+        <div class="pago">💵 EFECTIVO</div>
+      </div>
+
+      <div class="columna">
+        <h2>🌐 POR WEB</h2>
+        <a href="MercadoPago.html" class="pago mercadopago">🟡 MERCADO PAGO</a>
+      </div>
     </div>
-    <a href="#" class="boton">🏪 PAGAR EN LOCAL (EFECTIVO)</a>
-    <a href="Pago.html" class="boton">💳 VER MÉTODOS DE PAGO</a>
+
     <a href="Citas.html" class="volver">← Volver a servicios</a>
   </div>
+
   <script>
     const datos = {
-      brushing: { precio: "$500" },
-      corte: { precio: "$600" },
-      lavado: { precio: "$400" },
-      secado: { precio: "$450" },
-      alisado: { precio: "$1500" },
-      color: { precio: "$1800" }
+      brushing: { nombre: "Brushing", precio: "$500" },
+      corte: { nombre: "Corte", precio: "$300" },
+      lavado: { nombre: "Lavado", precio: "$400" },
+      secado: { nombre: "Secado", precio: "$450" },
+      alisado: { nombre: "Alisado", precio: "$1500" },
+      color: { nombre: "Color", precio: "$1800" }
     };
+
     const parametros = new URLSearchParams(window.location.search);
     const servicio = parametros.get("servicio");
+
     if (datos[servicio]) {
-      document.getElementById("servicio").textContent = servicio.charAt(0).toUpperCase() + servicio.slice(1);
+      document.getElementById("servicio").textContent = datos[servicio].nombre;
       document.getElementById("precio").textContent = datos[servicio].precio;
     }
   </script>
