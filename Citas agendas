@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Agendá tu cita | Maldivas</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #050505;
+      color: white;
+      font-family: Arial, sans-serif;
+      min-height: 100vh;
+      padding: 30px 20px;
+    }
+
+    .contenedor {
+      max-width: 600px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .logo {
+      color: #d4af37;
+      font-size: 32px;
+      font-weight: bold;
+      letter-spacing: 5px;
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+
+    .subtitulo {
+      color: #aaa;
+      margin-bottom: 30px;
+    }
+
+    .servicio {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #111;
+      border: 1px solid #5c4a18;
+      border-radius: 12px;
+      padding: 18px 20px;
+      margin-bottom: 12px;
+    }
+
+    .servicio span:first-child {
+      font-size: 18px;
+    }
+
+    .precio {
+      color: #d4af37;
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    .volver {
+      display: inline-block;
+      margin-top: 25px;
+      color: #d4af37;
+      text-decoration: none;
+    }
+
+    .volver:hover {
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="contenedor">
+
+    <div class="logo">MALDIVAS</div>
+
+    <h1>Agendá tu cita</h1>
+
+    <p class="subtitulo">
+      Elegí el servicio que querés realizar
+    </p>
+
+    <div class="servicio">
+      <span>Brushing</span>
+      <span class="precio">$990</span>
+    </div>
+
+    <div class="servicio">
+      <span>Corte</span>
+      <span class="precio">$990</span>
+    </div>
+
+    <div class="servicio">
+      <span>Lavado</span>
+      <span class="precio">$990</span>
+    </div>
+
+    <div class="servicio">
+      <span>Secado</span>
+      <span class="precio">$990</span>
+    </div>
+
+    <div class="servicio">
+      <span>Alisado</span>
+      <span class="precio">$990</span>
+    </div>
+
+    <div class="servicio">
+      <span>Color</span>
+      <span class="precio">$990</span>
+    </div>
+
+    <a class="volver" href="index.html">
+      ← Volver a Maldivas
+    </a>
+
+  </div>
+
+</body>
+</html>
