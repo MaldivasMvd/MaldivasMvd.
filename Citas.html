@@ -11,7 +11,10 @@
     h1 { font-size:35px; margin-bottom:10px; }
     p { color:white; }
     .servicios { max-width:650px; margin:30px auto; padding:20px; display:flex; flex-direction:column; gap:14px; }
-    .servicio { border:1px solid #d4af37; border-radius:14px; background:#080808; overflow:hidden; transition:transform .25s ease, background .3s, box-shadow .3s; cursor:pointer; text-align:left; }\n    .servicio:hover { transform:scale(1.035); background:#111; box-shadow:0 8px 24px rgba(212,175,55,.16); }
+    .servicio { position:relative; border:1px solid #d4af37; border-radius:14px; background:#080808 center/cover no-repeat; overflow:hidden; transition:transform .3s ease, box-shadow .3s ease, border-color .3s ease; cursor:pointer; text-align:left; isolation:isolate; }
+    .servicio::before { content:""; position:absolute; inset:0; background:linear-gradient(90deg,rgba(0,0,0,.92),rgba(0,0,0,.72),rgba(0,0,0,.48)); z-index:-1; transition:.3s ease; }
+    .servicio:hover { transform:scale(1.045); box-shadow:0 12px 30px rgba(212,175,55,.28); border-color:#f2cf63; z-index:2; }
+    .servicio:hover::before { background:linear-gradient(90deg,rgba(0,0,0,.86),rgba(0,0,0,.62),rgba(0,0,0,.38)); }\n    .servicio:hover { transform:scale(1.035); background:#111; box-shadow:0 8px 24px rgba(212,175,55,.16); }
     .servicio-titulo { padding:22px; font-size:18px; font-weight:bold; display:flex; justify-content:space-between; align-items:center; }
     .flecha { transition:.3s; }
     .servicio.activo .flecha { transform:rotate(180deg); }
@@ -34,32 +37,32 @@
   </header>
 
   <div class="servicios">
-    <div class="servicio" onclick="abrir(this)">
+    <div class="servicio" style="background-image:url('https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=1200&q=80')" onclick="abrir(this)">
       <div class="servicio-titulo"><span>Brushing</span><span class="flecha">⌄</span></div>
       <div class="detalle"><div class="precio">$500</div><p class="descripcion">Peinado con secador para dar forma, movimiento y un acabado prolijo al cabello.</p><a class="comprar" href="Servicio.html?servicio=brushing" onclick="event.stopPropagation()">COMPRAR</a></div>
     </div>
 
-    <div class="servicio" onclick="abrir(this)">
+    <div class="servicio" style="background-image:url('https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1200&q=80')" onclick="abrir(this)">
       <div class="servicio-titulo"><span>Corte</span><span class="flecha">⌄</span></div>
       <div class="detalle"><div class="precio">$300</div><p class="descripcion">Corte personalizado para renovar tu estilo y darle forma a tu cabello.</p><a class="comprar" href="Servicio.html?servicio=corte" onclick="event.stopPropagation()">COMPRAR</a></div>
     </div>
 
-    <div class="servicio" onclick="abrir(this)">
+    <div class="servicio" style="background-image:url('https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=1200&q=80')" onclick="abrir(this)">
       <div class="servicio-titulo"><span>Lavado</span><span class="flecha">⌄</span></div>
       <div class="detalle"><div class="precio">$400</div><p class="descripcion">Lavado para limpiar y refrescar el cabello antes de tu peinado o tratamiento.</p><a class="comprar" href="Servicio.html?servicio=lavado" onclick="event.stopPropagation()">COMPRAR</a></div>
     </div>
 
-    <div class="servicio" onclick="abrir(this)">
+    <div class="servicio" style="background-image:url('https://images.unsplash.com/photo-1487412912498-0447578fcca8?auto=format&fit=crop&w=1200&q=80')" onclick="abrir(this)">
       <div class="servicio-titulo"><span>Secado</span><span class="flecha">⌄</span></div>
       <div class="detalle"><div class="precio">$450</div><p class="descripcion">Secado profesional para dejar el cabello prolijo y listo para lucir.</p><a class="comprar" href="Servicio.html?servicio=secado" onclick="event.stopPropagation()">COMPRAR</a></div>
     </div>
 
-    <div class="servicio" onclick="abrir(this)">
+    <div class="servicio" style="background-image:url('https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&w=1200&q=80')" onclick="abrir(this)">
       <div class="servicio-titulo"><span>Alisado</span><span class="flecha">⌄</span></div>
       <div class="detalle"><div class="precio">$1500</div><p class="descripcion">Tratamiento para lograr un cabello más liso, manejable y con acabado suave.</p><a class="comprar" href="Servicio.html?servicio=alisado" onclick="event.stopPropagation()">COMPRAR</a></div>
     </div>
 
-    <div class="servicio" onclick="abrir(this)">
+    <div class="servicio" style="background-image:url('https://images.unsplash.com/photo-1560869713-7d0a29430803?auto=format&fit=crop&w=1200&q=80')" onclick="abrir(this)">
       <div class="servicio-titulo"><span>Color</span><span class="flecha">⌄</span></div>
       <div class="detalle"><div class="precio">$1800</div><p class="descripcion">Servicio de coloración para renovar, cambiar o realzar el tono de tu cabello.</p><a class="comprar" href="Servicio.html?servicio=color" onclick="event.stopPropagation()">COMPRAR</a></div>
     </div>
