@@ -13,6 +13,7 @@
     .servicios { max-width:650px; margin:30px auto; padding:20px; display:flex; flex-direction:column; gap:14px; }
     .servicio { position:relative; border:1px solid #d4af37; border-radius:14px; background:#080808 center/cover no-repeat; overflow:hidden; transition:transform .3s ease, box-shadow .3s ease, border-color .3s ease; cursor:pointer; text-align:left; isolation:isolate; }
     .servicio::before { content:""; position:absolute; inset:0; background:linear-gradient(90deg,rgba(0,0,0,.92),rgba(0,0,0,.72),rgba(0,0,0,.48)); z-index:-1; transition:.3s ease; }
+    .servicio { background-size:cover !important; background-position:center !important; }
     .servicio:hover { transform:scale(1.045); box-shadow:0 12px 30px rgba(212,175,55,.28); border-color:#f2cf63; z-index:2; }
     .servicio:hover::before { background:linear-gradient(90deg,rgba(0,0,0,.86),rgba(0,0,0,.62),rgba(0,0,0,.38)); }\n    .servicio:hover { transform:scale(1.035); background:#111; box-shadow:0 8px 24px rgba(212,175,55,.16); }
     .servicio-titulo { padding:22px; font-size:18px; font-weight:bold; display:flex; justify-content:space-between; align-items:center; }
@@ -71,7 +72,22 @@
   <a class="boton" href="index.html">Volver al inicio</a>
 
   <script>
+    const servicios = document.querySelectorAll('.servicio');
+
+    if (window.matchMedia('(hover: hover)').matches) {
+      servicios.forEach(servicio => {
+        servicio.addEventListener('mouseenter', () => {
+          servicios.forEach(s => s.classList.remove('activo'));
+          servicio.classList.add('activo');
+        });
+        servicio.addEventListener('mouseleave', () => {
+          servicio.classList.remove('activo');
+        });
+      });
+    }
+
     function abrir(elemento) {
+      if (window.matchMedia('(hover: hover)').matches) return;
       document.querySelectorAll('.servicio').forEach(servicio => {
         if (servicio !== elemento) servicio.classList.remove('activo');
       });
