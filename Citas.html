@@ -1,105 +1,77 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agendá tu cita | Maldivas</title>
-
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #000;
-            color: #d4af37;
-            text-align: center;
-        }
-
-        header {
-            padding: 30px 20px 15px;
-        }
-
-        h1 {
-            font-size: 35px;
-            margin-bottom: 10px;
-        }
-
-        p {
-            color: white;
-        }
-
-        .servicios {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 15px;
-            max-width: 800px;
-            margin: 30px auto;
-            padding: 20px;
-        }
-
-        .servicio {
-            border: 1px solid #d4af37;
-            border-radius: 12px;
-            padding: 25px 15px;
-            cursor: pointer;
-            transition: 0.2s;
-        }
-
-        .servicio:hover {
-            background: #d4af37;
-            color: #000;
-        }
-
-        .boton {
-            display: inline-block;
-            margin: 20px;
-            padding: 15px 30px;
-            background: #d4af37;
-            color: #000;
-            text-decoration: none;
-            border-radius: 10px;
-            font-weight: bold;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agendá tu cita | Maldivas</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin:0; font-family:Arial,sans-serif; background:#000; color:#d4af37; text-align:center; }
+    header { padding:30px 20px 15px; }
+    h1 { font-size:35px; margin-bottom:10px; }
+    p { color:white; }
+    .servicios { max-width:650px; margin:30px auto; padding:20px; display:flex; flex-direction:column; gap:14px; }
+    .servicio { border:1px solid #d4af37; border-radius:14px; background:#080808; overflow:hidden; transition:.3s; cursor:pointer; text-align:left; }
+    .servicio-titulo { padding:22px; font-size:18px; font-weight:bold; display:flex; justify-content:space-between; align-items:center; }
+    .flecha { transition:.3s; }
+    .servicio.activo .flecha { transform:rotate(180deg); }
+    .detalle { max-height:0; opacity:0; overflow:hidden; padding:0 22px; transition:max-height .35s ease, opacity .3s ease, padding .35s ease; color:white; }
+    .servicio.activo { background:#111; box-shadow:0 0 18px rgba(212,175,55,.12); }
+    .servicio.activo .detalle { max-height:220px; opacity:1; padding:0 22px 22px; }
+    .precio { color:#d4af37; font-size:21px; font-weight:bold; margin-bottom:10px; }
+    .descripcion { color:#ddd; line-height:1.5; margin:0; }
+    .boton { display:inline-block; margin:20px; padding:15px 30px; background:#d4af37; color:#000; text-decoration:none; border-radius:10px; font-weight:bold; }
+  </style>
 </head>
-
 <body>
+  <header>
+    <h1>MALDIVAS</h1>
+    <p>Centro Estético & Peluquería</p>
+    <h2>Agendá tu cita</h2>
+    <p>Elegí el servicio que querés realizarte</p>
+  </header>
 
-    <header>
-        <h1>MALDIVAS</h1>
-        <p>Centro Estético & Peluquería</p>
-        <h2>Agendá tu cita</h2>
-        <p>Elegí el servicio que querés realizarte</p>
-    </header>
-
-    <div class="servicios">
-
-        <div class="servicio" onclick="location.href='Servicio.html?servicio=brushing'">
-            Brushing
-        </div>
-
-        <div class="servicio" onclick="location.href='Servicio.html?servicio=corte'">
-            Corte
-        </div>
-
-        <div class="servicio" onclick="location.href='Servicio.html?servicio=lavado'">
-            Lavado
-        </div>
-
-        <div class="servicio" onclick="location.href='Servicio.html?servicio=secado'">
-            Secado
-        </div>
-
-        <div class="servicio" onclick="location.href='Servicio.html?servicio=alisado'">
-            Alisado
-        </div>
-
-        <div class="servicio" onclick="location.href='Servicio.html?servicio=color'">
-            Color
-        </div>
-
+  <div class="servicios">
+    <div class="servicio" onclick="abrir(this)">
+      <div class="servicio-titulo"><span>Brushing</span><span class="flecha">⌄</span></div>
+      <div class="detalle"><div class="precio">$500</div><p class="descripcion">Peinado con secador para dar forma, movimiento y un acabado prolijo al cabello.</p></div>
     </div>
 
-    <a class="boton" href="index.html">Volver al inicio</a>
+    <div class="servicio" onclick="abrir(this)">
+      <div class="servicio-titulo"><span>Corte</span><span class="flecha">⌄</span></div>
+      <div class="detalle"><div class="precio">$300</div><p class="descripcion">Corte personalizado para renovar tu estilo y darle forma a tu cabello.</p></div>
+    </div>
 
+    <div class="servicio" onclick="abrir(this)">
+      <div class="servicio-titulo"><span>Lavado</span><span class="flecha">⌄</span></div>
+      <div class="detalle"><div class="precio">$400</div><p class="descripcion">Lavado para limpiar y refrescar el cabello antes de tu peinado o tratamiento.</p></div>
+    </div>
+
+    <div class="servicio" onclick="abrir(this)">
+      <div class="servicio-titulo"><span>Secado</span><span class="flecha">⌄</span></div>
+      <div class="detalle"><div class="precio">$450</div><p class="descripcion">Secado profesional para dejar el cabello prolijo y listo para lucir.</p></div>
+    </div>
+
+    <div class="servicio" onclick="abrir(this)">
+      <div class="servicio-titulo"><span>Alisado</span><span class="flecha">⌄</span></div>
+      <div class="detalle"><div class="precio">$1500</div><p class="descripcion">Tratamiento para lograr un cabello más liso, manejable y con acabado suave.</p></div>
+    </div>
+
+    <div class="servicio" onclick="abrir(this)">
+      <div class="servicio-titulo"><span>Color</span><span class="flecha">⌄</span></div>
+      <div class="detalle"><div class="precio">$1800</div><p class="descripcion">Servicio de coloración para renovar, cambiar o realzar el tono de tu cabello.</p></div>
+    </div>
+  </div>
+
+  <a class="boton" href="index.html">Volver al inicio</a>
+
+  <script>
+    function abrir(elemento) {
+      document.querySelectorAll('.servicio').forEach(servicio => {
+        if (servicio !== elemento) servicio.classList.remove('activo');
+      });
+      elemento.classList.toggle('activo');
+    }
+  </script>
 </body>
 </html>
