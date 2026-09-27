@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Maldivas | Peluquería & Centro Estético</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #080808;
+      color: white;
+    }
+
+    header {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 30px;
+      background:
+        linear-gradient(rgba(0,0,0,.75), rgba(0,0,0,.9)),
+        url("https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&w=1600&q=80");
+      background-size: cover;
+      background-position: center;
+    }
+
+    .logo {
+      color: #d4af37;
+      font-size: 55px;
+      font-weight: bold;
+      letter-spacing: 8px;
+    }
+
+    .subtitle {
+      color: #ddd;
+      font-size: 20px;
+      margin-top: 10px;
+      letter-spacing: 3px;
+    }
+
+    .btn {
+      margin-top: 35px;
+      padding: 15px 30px;
+      background: #d4af37;
+      color: #000;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 30px;
+      transition: .3s;
+    }
+
+    .btn:hover {
+      background: white;
+      transform: scale(1.05);
+    }
+
+    section {
+      padding: 70px 25px;
+      text-align: center;
+    }
+
+    h2 {
+      color: #d4af37;
+      font-size: 35px;
+      margin-bottom: 35px;
+    }
+
+    .servicios {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .card {
+      background: #111;
+      border: 1px solid #6f5b1d;
+      padding: 30px 20px;
+      border-radius: 15px;
+      transition: .3s;
+    }
+
+    .card:hover {
+      transform: translateY(-7px);
+      border-color: #d4af37;
+    }
+
+    .card h3 {
+      color: #d4af37;
+      margin-bottom: 15px;
+    }
+
+    .card p {
+      color: #bbb;
+    }
+
+    .info {
+      background: #0d0d0d;
+    }
+
+    .info p {
+      margin: 12px;
+      font-size: 18px;
+    }
+
+    .gold {
+      color: #d4af37;
+    }
+
+    footer {
+      padding: 30px;
+      text-align: center;
+      border-top: 1px solid #292929;
+      color: #888;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="logo">MALDIVAS</div>
+
+    <div class="subtitle">
+      PELUQUERÍA & CENTRO ESTÉTICO
+    </div>
+
+    <a class="btn" href="#turnos">
+      AGENDÁ TU CITA
+    </a>
+  </header>
+
+
+  <section>
+    <h2>Nuestros servicios</h2>
+
+    <div class="servicios">
+
+      <div class="card">
+        <h3>Peluquería</h3>
+        <p>Cortes, brushing, peinados y mucho más.</p>
+      </div>
+
+      <div class="card">
+        <h3>Coloración</h3>
+        <p>Color, mechas, balayage y tratamientos.</p>
+      </div>
+
+      <div class="card">
+        <h3>Tratamientos</h3>
+        <p>Cuidado y nutrición para tu cabello.</p>
+      </div>
+
+      <div class="card">
+        <h3>Centro Estético</h3>
+        <p>Servicios de belleza y cuidado personal.</p>
+      </div>
+
+    </div>
+  </section>
+
+
+  <section class="info" id="turnos">
+
+    <h2>Agendá tu cita</h2>
+
+    <p>
+      📍 <span class="gold">Ubicación:</span>
+      Montevideo, Uruguay
+    </p>
+
+    <p>
+      🕐 <span class="gold">Lunes a sábado:</span>
+      8:30 a 19:00
+    </p>
+
+    <a class="btn" href="#">
+      CONTACTANOS
+    </a>
+
+  </section>
+
+
+  <footer>
+    © 2026 MALDIVAS · Peluquería & Centro Estético
+  </footer>
+
+</body>
+</html>
