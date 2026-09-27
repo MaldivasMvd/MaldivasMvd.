@@ -3,105 +3,48 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>Medios de pago | Maldivas</title>
-
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: Arial, sans-serif;
-    }
-
-    body {
-      background: #080808;
-      color: white;
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 25px;
-    }
-
-    .contenedor {
-      width: 100%;
-      max-width: 500px;
-      background: #111;
-      border: 1px solid #6f5b1d;
-      border-radius: 20px;
-      padding: 40px 25px;
-    }
-
-    h1 {
-      color: #d4af37;
-      font-size: 32px;
-      margin-bottom: 10px;
-    }
-
-    p {
-      color: #bbb;
-      margin-bottom: 30px;
-    }
-
-    .pago {
-      display: block;
-      width: 100%;
-      padding: 18px;
-      margin: 15px 0;
-      border: 1px solid #d4af37;
-      border-radius: 30px;
-      background: #181818;
-      color: #d4af37;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 17px;
-    }
-
-    .pago:hover {
-      background: #d4af37;
-      color: #000;
-    }
-
-    .volver {
-      display: inline-block;
-      margin-top: 20px;
-      color: #d4af37;
-      text-decoration: none;
+    * { margin:0; padding:0; box-sizing:border-box; font-family:Arial,sans-serif; }
+    body { background:#080808; color:white; min-height:100vh; display:flex; justify-content:center; align-items:center; text-align:center; padding:25px; }
+    .contenedor { width:100%; max-width:850px; background:#111; border:1px solid #6f5b1d; border-radius:20px; padding:40px 25px; }
+    h1 { color:#d4af37; font-size:35px; margin-bottom:10px; }
+    .subtitulo { color:#bbb; margin-bottom:35px; font-size:17px; }
+    .columnas { display:grid; grid-template-columns:1fr 1fr; gap:25px; }
+    .columna { background:#181818; border:1px solid #333; border-radius:18px; padding:25px 20px; }
+    .columna h2 { color:#d4af37; font-size:22px; margin-bottom:25px; }
+    .pago { display:block; width:100%; padding:16px 10px; margin:13px 0; border:1px solid #d4af37; border-radius:30px; background:#111; color:#d4af37; text-decoration:none; font-weight:bold; font-size:16px; transition:.2s; }
+    .pago:hover { background:#d4af37; color:#000; transform:scale(1.02); }
+    .mercadopago { background:#d4af37; color:#000; }
+    .mercadopago:hover { background:white; }
+    .volver { display:inline-block; margin-top:30px; color:#d4af37; text-decoration:none; }
+    @media(max-width:600px) {
+      .columnas { grid-template-columns:1fr 1fr; gap:10px; }
+      .contenedor { padding:30px 12px; }
+      .columna { padding:20px 10px; }
+      .columna h2 { font-size:18px; }
+      .pago { font-size:14px; padding:14px 5px; }
     }
   </style>
 </head>
-
 <body>
-
   <div class="contenedor">
-
     <h1>MALDIVAS</h1>
-
-    <p>Elegí tu medio de pago</p>
-
-    <a href="#" class="pago">
-      💳 DÉBITO
-    </a>
-
-    <a href="#" class="pago">
-      💳 CRÉDITO
-    </a>
-
-    <a href="#" class="pago">
-      🟡 MERCADO PAGO
-    </a>
-
-    <a href="#" class="pago">
-      🏦 TRANSFERENCIA
-    </a>
-
-    <a href="Citas.html" class="volver">
-      ← Volver a servicios
-    </a>
-
+    <p class="subtitulo">Elegí cómo querés pagar</p>
+    <div class="columnas">
+      <div class="columna">
+        <h2>🏪 EN EL LOCAL</h2>
+        <div class="pago">🏦 TRANSFERENCIA</div>
+        <div class="pago">💳 DÉBITO</div>
+        <div class="pago">💳 CRÉDITO</div>
+        <div class="pago">💵 EFECTIVO</div>
+      </div>
+      <div class="columna">
+        <h2>🌐 POR WEB</h2>
+        <a href="MercadoPago.html" class="pago mercadopago">🟡 MERCADO PAGO</a>
+      </div>
+    </div>
+    <a href="Citas.html" class="volver">← Volver a servicios</a>
   </div>
-
 </body>
 </html>
