@@ -14,6 +14,12 @@
       font-family: Arial, sans-serif;
     }
 
+    html, body {
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
     body {
       background: #080808;
       color: white;
@@ -39,9 +45,19 @@
 
     .logo {
       color: #d4af37;
+      font-family: 'Cormorant Garamond', serif;
       font-size: 55px;
-      font-weight: bold;
-      letter-spacing: 8px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      max-width: 100%;
+      overflow-wrap: anywhere;
+    }
+
+    @media (max-width: 600px) {
+      header { width: 100%; padding: 24px 16px; }
+      .logo { font-size: clamp(36px, 11vw, 48px); letter-spacing: 1px; white-space: nowrap; }
+      .subtitle { font-size: 17px; letter-spacing: 2px; }
+      section { width: 100%; padding-left: 18px; padding-right: 18px; }
     }
 
     .subtitle {
