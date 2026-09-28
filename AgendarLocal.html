@@ -27,11 +27,6 @@ button:hover{background:#f0cf5a}.mensaje{display:none;margin-top:25px}.corazon{f
     <input id="nombre" type="text" placeholder="Escribí tu nombre" maxlength="60" autocomplete="name">
     <button id="terminar">TERMINAR</button>
   </div>
-  <div class="mensaje" id="mensaje">
-    <div class="corazon">♥</div>
-    <h2>Te esperamos bella</h2>
-
-  </div>
   <a class="volver" href="Citas.html">← Volver a servicios</a>
 </div>
 <script>
@@ -54,7 +49,7 @@ async function finalizar(){
   const {error}=await sb.from("appointments").insert({customer_name:nombre,service:d.nombre,price:precio,payment_method:m});
   if(error){console.error(error);alert("No se pudo guardar la cita. Intentá nuevamente.");boton.disabled=false;boton.textContent="TERMINAR";return;}
   document.getElementById("formulario").style.display="none";
-  document.getElementById("mensaje").style.display="block";
+  location.href="Citas.html";
 }
 document.getElementById("terminar").addEventListener("click",finalizar);
 document.getElementById("nombre").addEventListener("keydown",(e)=>{if(e.key==="Enter"){e.preventDefault();finalizar();}});
