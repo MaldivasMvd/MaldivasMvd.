@@ -24,7 +24,7 @@ button:disabled{opacity:.6;cursor:wait}.error{color:#ff9999;min-height:24px}.vol
 <script>
 const precios={brushing:["Brushing",500],corte:["Corte",300],lavado:["Lavado",400],secado:["Secado",450],alisado:["Alisado",1500],color:["Color",1800]};
 const servicio=new URLSearchParams(location.search).get("servicio");
-const seleccionado=precios[servicio];
+const seleccionado=servicio && Object.hasOwn(precios,servicio) ? precios[servicio] : null;
 const boton=document.getElementById("continuar");
 if(!seleccionado){document.getElementById("servicio").textContent="Servicio inválido";boton.disabled=true}
 else{document.getElementById("servicio").textContent=seleccionado[0];document.getElementById("precio").textContent="$"+seleccionado[1]+" UYU"}
