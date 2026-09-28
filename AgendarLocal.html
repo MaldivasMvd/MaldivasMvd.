@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agendar en el local | Maldivas_Studio</title>
+<style>
+*{box-sizing:border-box;font-family:Arial,sans-serif}
+body{margin:0;min-height:100vh;background:#080808;color:#fff;display:flex;align-items:center;justify-content:center;padding:24px;text-align:center}
+.card{width:100%;max-width:520px;background:#111;border:1px solid #6f5b1d;border-radius:22px;padding:38px 25px;box-shadow:0 0 30px rgba(212,175,55,.08)}
+h1{color:#d4af37;margin:0 0 10px;font-size:32px}.detalle{color:#ccc;margin-bottom:28px}
+label{display:block;text-align:left;color:#d4af37;font-weight:bold;margin:0 0 9px}
+input{width:100%;padding:15px 17px;border-radius:25px;border:1px solid #d4af37;background:#181818;color:#fff;font-size:17px;outline:none}
+button{width:100%;margin-top:20px;padding:15px;border:0;border-radius:25px;background:#d4af37;color:#000;font-weight:bold;font-size:16px;cursor:pointer}
+button:hover{background:#f0cf5a}.mensaje{display:none;margin-top:25px}.corazon{font-size:25px;animation:latido .8s ease-in-out infinite alternate}.mensaje h2{color:#d4af37;margin:8px 0}
+.volver{display:inline-block;margin-top:25px;color:#d4af37;text-decoration:none}
+@keyframes latido{to{transform:scale(1.2)}}
+</style>
+</head>
+<body>
+<div class="card">
+  <div id="formulario">
+    <h1>Agendá tu cita</h1>
+    <div class="detalle" id="detalle"></div>
+    <label for="nombre">Tu nombre</label>
+    <input id="nombre" type="text" placeholder="Escribí tu nombre" maxlength="60" autocomplete="name">
+    <button id="terminar">TERMINAR</button>
+  </div>
+  <div class="mensaje" id="mensaje">
+    <div class="corazon">♥</div>
+    <h2>Te esperamos bella</h2>
+    <p>Tu reserva está lista para enviar por WhatsApp.</p>
+  </div>
+  <a class="volver" href="Citas.html">← Volver a servicios</a>
+</div>
+<script>
+const datos={brushing:"Brushing",corte:"Corte",lavado:"Lavado",secado:"Secado",alisado:"Alisado",color:"Color"};
+const metodos={transferencia:"Transferencia",debito:"Débito",credito:"Crédito",efectivo:"Efectivo"};
+const p=new URLSearchParams(location.search);
+const servicio=p.get("servicio")||"";
+const metodo=p.get("metodo")||"";
+document.getElementById("detalle").textContent=(datos[servicio]||"Servicio")+" · Pago en el local"+(metodos[metodo]?" · "+metodos[metodo]:"");
+document.getElementById("terminar").addEventListener("click",()=>{
+  const nombre=document.getElementById("nombre").value.trim();
+  if(!nombre){document.getElementById("nombre").focus();return;}
+  document.getElementById("formulario").style.display="none";
+  document.getElementById("mensaje").style.display="block";
+  const texto="Hola Maldivas_Studio ✨ Mi nombre es "+nombre+". Me agendé para "+(datos[servicio]||"un servicio")+" y elegí pagar en el local"+(metodos[metodo]?" con "+metodos[metodo]:"")+".";
+  setTimeout(()=>{location.href="https://wa.me/59891268565?text="+encodeURIComponent(texto)},850);
+});
+</script>
+</body>
+</html>
