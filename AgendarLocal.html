@@ -16,6 +16,7 @@ button:hover{background:#f0cf5a}.mensaje{display:none;margin-top:25px}.corazon{f
 .volver{display:inline-block;margin-top:25px;color:#d4af37;text-decoration:none}
 @keyframes latido{to{transform:scale(1.2)}}
 </style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
 <div class="card">
@@ -40,9 +41,18 @@ const p=new URLSearchParams(location.search);
 const servicio=p.get("servicio")||"";
 const metodo=p.get("metodo")||"";
 document.getElementById("detalle").textContent=(datos[servicio]?.nombre||"Servicio")+" · "+(datos[servicio]?.precio||"")+" · Pago en el local"+(metodos[metodo]?" · "+metodos[metodo]:"");
-function finalizar(){
+const sb=supabase.createClient("https://ejbooxbgrtunoehcxxip.supabase.co","sb_publishable_xwYodv3gbRBhyKE1d_NEUw_le_jfPfq");
+async function finalizar(){
   const nombre=document.getElementById("nombre").value.trim();
   if(!nombre){document.getElementById("nombre").focus();return;}
+  const d=datos[servicio];
+  const m=metodos[metodo];
+  if(!d||!m){alert("No se pudo identificar el servicio o método de pago.");return;}
+  const boton=document.getElementById("terminar");
+  boton.disabled=true; boton.textContent="GUARDANDO...";
+  const precio=Number(d.precio.replace("$",""));
+  const {error}=await sb.from("appointments").insert({customer_name:nombre,service:d.nombre,price:precio,payment_method:m});
+  if(error){console.error(error);alert("No se pudo guardar la cita. Intentá nuevamente.");boton.disabled=false;boton.textContent="TERMINAR";return;}
   document.getElementById("formulario").style.display="none";
   document.getElementById("mensaje").style.display="block";
 }
