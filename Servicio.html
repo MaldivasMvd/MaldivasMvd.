@@ -42,10 +42,10 @@
     <div class="columnas">
       <div class="columna">
         <h2>🏪 EN EL LOCAL</h2>
-        <div class="pago transferencia">🏦 TRANSFERENCIA</div>
-        <div class="pago debito">💳 DÉBITO</div>
-        <div class="pago credito">💳 CRÉDITO</div>
-        <div class="pago efectivo">💵 EFECTIVO</div>
+        <a id="local-transferencia" class="pago transferencia" href="#">🏦 TRANSFERENCIA</a>
+        <a id="local-debito" class="pago debito" href="#">💳 DÉBITO</a>
+        <a id="local-credito" class="pago credito" href="#">💳 CRÉDITO</a>
+        <a id="local-efectivo" class="pago efectivo" href="#">💵 EFECTIVO</a>
       </div>
 
       <div class="columna">
@@ -69,6 +69,12 @@
 
     const parametros = new URLSearchParams(window.location.search);
     const servicio = parametros.get("servicio");
+
+    const metodosLocal = ["transferencia", "debito", "credito", "efectivo"];
+    metodosLocal.forEach(metodo => {
+      const enlace = document.getElementById("local-" + metodo);
+      enlace.href = "AgendarLocal.html?servicio=" + encodeURIComponent(servicio || "") + "&metodo=" + encodeURIComponent(metodo);
+    });
 
     if (datos[servicio]) {
       document.getElementById("servicio").textContent = datos[servicio].nombre;
