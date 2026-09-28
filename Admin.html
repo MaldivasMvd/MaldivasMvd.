@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="es">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Admin | Maldivas_Studio</title>
+<style>*{box-sizing:border-box;font-family:Arial,sans-serif}body{margin:0;min-height:100vh;background:#080808;color:#fff;display:flex;align-items:center;justify-content:center;padding:25px}.box{width:100%;max-width:390px;background:#111;border:1px solid #6f5b1d;border-radius:20px;padding:32px;text-align:center}h1{color:#d4af37}p{color:#aaa;line-height:1.5}a,button{display:inline-block;margin-top:15px;padding:12px 20px;border-radius:25px;border:1px solid #d4af37;background:#d4af37;color:#000;text-decoration:none;font-weight:bold;cursor:pointer}.estado{color:#d4af37}</style></head>
+<body><div class="box"><h1>Maldivas_Studio</h1><div id="contenido"></div></div>
+<script>
+const c=document.getElementById("contenido");
+if(localStorage.getItem("maldivas_admin")==="true"){
+ c.innerHTML='<p class="estado">● Sesión de administrador iniciada</p><p>El panel privado de agendados se conectará cuando configuremos la base de datos segura.</p><button id="salir">Cerrar sesión</button><br><a href="index.html">Volver</a>';
+ document.getElementById("salir").onclick=()=>{localStorage.removeItem("maldivas_admin");location.href="index.html"};
+}else{
+ c.innerHTML='<p>El acceso privado todavía necesita autenticación segura. No voy a poner una contraseña dentro del HTML porque quedaría visible públicamente.</p><a href="index.html">Volver</a>';
+}
+</script></body></html>
