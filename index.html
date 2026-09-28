@@ -241,7 +241,7 @@
     sessionStorage.removeItem("maldivas_agenda_recibida");
     const toast=document.getElementById("agendaToast");
     toast.classList.add("mostrar");
-    setTimeout(()=>toast.classList.remove("mostrar"),1000);
+    setTimeout(()=>toast.classList.remove("mostrar"),5000);
   }
   if (localStorage.getItem("maldivas_admin_device") === "true") {
     document.getElementById("googleAdmin").style.display = "block";
