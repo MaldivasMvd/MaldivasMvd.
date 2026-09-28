@@ -19,10 +19,6 @@
       color: white;
     }
 
-    .admin-login { position:fixed; left:10px; bottom:10px; z-index:20; color:#555; font-size:11px; text-decoration:none; opacity:.38; transition:.2s; }
-    .admin-login:hover { color:#d4af37; opacity:1; }
-    .admin-badge { display:none; position:fixed; right:14px; top:14px; z-index:30; background:#111; color:#d4af37; border:1px solid #6f5b1d; border-radius:18px; padding:7px 12px; font-size:12px; font-weight:bold; box-shadow:0 4px 16px rgba(0,0,0,.4); }
-
     header {
       min-height: 100vh;
       display: flex;
@@ -163,8 +159,6 @@
 </head>
 
 <body>
-  <a href="Admin.html" class="admin-login" id="adminLogin">admin</a>
-  <div class="admin-badge" id="adminBadge">● ADMIN</div>
 
   <header>
     <div class="logo">Maldivas_Studio</div>
@@ -234,12 +228,5 @@
   <footer>
     © 2026 Maldivas_Studio · Peluquería & Centro Estético
   </footer>
-
-<script>
-  if (localStorage.getItem("maldivas_admin") === "true") {
-    document.getElementById("adminBadge").style.display = "block";
-    document.getElementById("adminLogin").style.display = "none";
-  }
-</script>
 </body>
 </html>
