@@ -34,18 +34,20 @@ button:hover{background:#f0cf5a}.mensaje{display:none;margin-top:25px}.corazon{f
   <a class="volver" href="Citas.html">← Volver a servicios</a>
 </div>
 <script>
-const datos={brushing:"Brushing",corte:"Corte",lavado:"Lavado",secado:"Secado",alisado:"Alisado",color:"Color"};
+const datos={brushing:{nombre:"Brushing",precio:"$500"},corte:{nombre:"Corte",precio:"$300"},lavado:{nombre:"Lavado",precio:"$400"},secado:{nombre:"Secado",precio:"$450"},alisado:{nombre:"Alisado",precio:"$1500"},color:{nombre:"Color",precio:"$1800"}};
 const metodos={transferencia:"Transferencia",debito:"Débito",credito:"Crédito",efectivo:"Efectivo"};
 const p=new URLSearchParams(location.search);
 const servicio=p.get("servicio")||"";
 const metodo=p.get("metodo")||"";
-document.getElementById("detalle").textContent=(datos[servicio]||"Servicio")+" · Pago en el local"+(metodos[metodo]?" · "+metodos[metodo]:"");
-document.getElementById("terminar").addEventListener("click",()=>{
+document.getElementById("detalle").textContent=(datos[servicio]?.nombre||"Servicio")+" · "+(datos[servicio]?.precio||"")+" · Pago en el local"+(metodos[metodo]?" · "+metodos[metodo]:"");
+function finalizar(){
   const nombre=document.getElementById("nombre").value.trim();
   if(!nombre){document.getElementById("nombre").focus();return;}
   document.getElementById("formulario").style.display="none";
   document.getElementById("mensaje").style.display="block";
-});
+}
+document.getElementById("terminar").addEventListener("click",finalizar);
+document.getElementById("nombre").addEventListener("keydown",(e)=>{if(e.key==="Enter"){e.preventDefault();finalizar();}});
 </script>
 </body>
 </html>
