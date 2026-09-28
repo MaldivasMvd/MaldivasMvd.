@@ -1,0 +1,4 @@
+project_id = "ejbooxbgrtunoehcxxip"
+
+[functions.mercado-pago-preferencia]
+verify_jwt = false
