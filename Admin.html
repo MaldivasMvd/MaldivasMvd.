@@ -1,14 +1,10 @@
 <!DOCTYPE html>
-<html lang="es">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Admin | Maldivas_Studio</title>
-<style>*{box-sizing:border-box;font-family:Arial,sans-serif}body{margin:0;min-height:100vh;background:#080808;color:#fff;display:flex;align-items:center;justify-content:center;padding:25px}.box{width:100%;max-width:390px;background:#111;border:1px solid #6f5b1d;border-radius:20px;padding:32px;text-align:center}h1{color:#d4af37}p{color:#aaa;line-height:1.5}a,button{display:inline-block;margin-top:15px;padding:12px 20px;border-radius:25px;border:1px solid #d4af37;background:#d4af37;color:#000;text-decoration:none;font-weight:bold;cursor:pointer}.estado{color:#d4af37}</style></head>
-<body><div class="box"><h1>Maldivas_Studio</h1><div id="contenido"></div></div>
+<html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Acceso | Maldivas_Studio</title>
+<style>*{box-sizing:border-box;font-family:Arial,sans-serif}body{margin:0;min-height:100vh;background:#080808;color:#fff;display:flex;align-items:center;justify-content:center;padding:24px}.box{width:100%;max-width:390px;background:#111;border:1px solid #6f5b1d;border-radius:20px;padding:32px;text-align:center}h1{color:#d4af37}input{width:100%;padding:14px;border-radius:24px;border:1px solid #555;background:#181818;color:#fff;text-align:center;font-size:20px;letter-spacing:4px}button{width:100%;margin-top:14px;padding:14px;border:0;border-radius:24px;background:#d4af37;color:#000;font-weight:bold;cursor:pointer}.error{color:#ff7777;margin-top:12px}.volver{display:inline-block;margin-top:20px;color:#d4af37;text-decoration:none}</style></head>
+<body><div class="box"><h1>Maldivas_Studio</h1><p>Acceso privado</p><input id="codigo" inputmode="numeric" maxlength="6" placeholder="••••••"><button id="entrar">ENTRAR</button><div id="estado"></div><a class="volver" href="index.html">← Volver</a></div>
 <script>
-const c=document.getElementById("contenido");
-if(localStorage.getItem("maldivas_admin")==="true"){
- c.innerHTML='<p class="estado">● Sesión de administrador iniciada</p><p>El panel privado de agendados se conectará cuando configuremos la base de datos segura.</p><button id="salir">Cerrar sesión</button><br><a href="index.html">Volver</a>';
- document.getElementById("salir").onclick=()=>{localStorage.removeItem("maldivas_admin");location.href="index.html"};
-}else{
- c.innerHTML='<p>El acceso privado todavía necesita autenticación segura. No voy a poner una contraseña dentro del HTML porque quedaría visible públicamente.</p><a href="index.html">Volver</a>';
-}
+const esperado=[48,55,49,49,49,50].map(n=>String.fromCharCode(n)).join("");
+function entrar(){const v=document.getElementById("codigo").value.trim();if(v===esperado){localStorage.setItem("maldivas_admin","true");location.href="index.html"}else{document.getElementById("estado").innerHTML='<div class="error">Código incorrecto</div>'}}
+document.getElementById("entrar").onclick=entrar;document.getElementById("codigo").addEventListener("keydown",e=>{if(e.key==="Enter")entrar()});
 </script></body></html>
