@@ -51,9 +51,9 @@ Deno.serve(async (req) => {
         }],
         external_reference: crypto.randomUUID(),
         back_urls: {
-          success: `${origen}${ruta}PagarOnline.html?servicio=${encodeURIComponent(servicio)}`,
-          pending: `${origen}${ruta}PagarOnline.html?servicio=${encodeURIComponent(servicio)}`,
-          failure: `${origen}${ruta}PagarOnline.html?servicio=${encodeURIComponent(servicio)}`,
+          success: `${origen}${ruta}ResultadoPago.html`,
+          pending: `${origen}${ruta}ResultadoPago.html`,
+          failure: `${origen}${ruta}ResultadoPago.html`,
         },
       }),
     });
