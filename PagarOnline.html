@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pagar online | Maldivas_Studio</title>
+<style>
+*{box-sizing:border-box;font-family:Arial,sans-serif}
+body{margin:0;min-height:100vh;background:#080808;color:#fff;display:grid;place-items:center;padding:24px;text-align:center}
+.card{width:100%;max-width:480px;background:#111;border:1px solid #6f5b1d;border-radius:20px;padding:35px 24px}
+h1{color:#d4af37}p{line-height:1.5}.precio{font-size:25px;color:#d4af37;font-weight:bold}
+button{width:100%;padding:16px;margin-top:24px;border:0;border-radius:28px;background:#d4af37;color:#000;font-weight:bold;cursor:pointer}
+button:disabled{opacity:.6;cursor:wait}.error{color:#ff9999;min-height:24px}.volver{color:#d4af37}
+</style>
+</head>
+<body>
+<div class="card">
+<h1>Pago por Mercado Pago</h1>
+<p id="servicio"></p><p id="precio" class="precio"></p>
+<p>Al continuar, vas a pagar en la página segura de Mercado Pago.</p>
+<button id="continuar">CONTINUAR AL PAGO</button>
+<p id="error" class="error" role="alert"></p>
+<a class="volver" href="Citas.html">← Volver a servicios</a>
+</div>
+<script>
+const precios={brushing:["Brushing",500],corte:["Corte",300],lavado:["Lavado",400],secado:["Secado",450],alisado:["Alisado",1500],color:["Color",1800]};
+const servicio=new URLSearchParams(location.search).get("servicio");
+const seleccionado=servicio && Object.hasOwn(precios,servicio) ? precios[servicio] : null;
+const boton=document.getElementById("continuar");
+if(!seleccionado){document.getElementById("servicio").textContent="Servicio inválido";boton.disabled=true}
+else{document.getElementById("servicio").textContent=seleccionado[0];document.getElementById("precio").textContent="$"+seleccionado[1]+" UYU"}
+boton.addEventListener("click",async()=>{
+  if(!seleccionado)return;
+  boton.disabled=true;boton.textContent="PREPARANDO PAGO...";
+  document.getElementById("error").textContent="";
+  try{
+    const respuesta=await fetch("https://ejbooxbgrtunoehcxxip.supabase.co/functions/v1/mercado-pago-preferencia",{
+      method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({servicio})
+    });
+    const resultado=await respuesta.json();
+    if(!respuesta.ok||!resultado.init_point)throw new Error("No se pudo iniciar el pago.");
+    location.href=resultado.init_point;
+  }catch(error){
+    document.getElementById("error").textContent="No se pudo iniciar el pago. Intentá de nuevo más tarde.";
+    boton.disabled=false;boton.textContent="CONTINUAR AL PAGO";
+  }
+});
+</script>
+</body></html>

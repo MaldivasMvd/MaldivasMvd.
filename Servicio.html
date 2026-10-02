@@ -58,7 +58,7 @@
 
       <div class="columna">
         <h2>🌐 POR WEB</h2>
-        <a href="https://link.mercadopago.com.uy/zorr" target="_blank" rel="noopener noreferrer" class="pago mercadopago mercadopago">🟡 MERCADO PAGO</a>
+        <a id="pagar-online" href="#" class="pago mercadopago">🟡 MERCADO PAGO</a>
       </div>
     </div>
 
@@ -83,6 +83,13 @@
       const enlace = document.getElementById("local-" + metodo);
       enlace.href = "AgendarLocal.html?servicio=" + encodeURIComponent(servicio || "") + "&metodo=" + encodeURIComponent(metodo);
     });
+
+    const pagarOnline = document.getElementById("pagar-online");
+    if (datos[servicio]) {
+      pagarOnline.href = "PagarOnline.html?servicio=" + encodeURIComponent(servicio);
+    } else {
+      pagarOnline.style.display = "none";
+    }
 
     if (datos[servicio]) {
       document.getElementById("servicio").textContent = datos[servicio].nombre;
