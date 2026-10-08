@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /Admin.html
+Disallow: /Caja.html
+Sitemap: https://maldivasmvd.github.io/MaldivasMvd./sitemap.xml
