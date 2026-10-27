@@ -35,10 +35,7 @@ button:hover{background:#f0cf5a}.mensaje{display:none;margin-top:25px}.corazon{f
     <label for="nombre">Tu nombre</label>
     <input id="nombre" type="text" placeholder="Escribí tu nombre" maxlength="60" autocomplete="name">
     <label for="fecha">Fecha</label>
-    <div style="position:relative">
-      <button type="button" id="fechaVisible" style="width:100%;margin:0 0 16px;padding:15px 17px;border-radius:25px;border:1px solid #d4af37;background:#181818;color:#fff;font-size:17px;text-align:left;font-weight:normal">dd/mm</button>
-      <input id="fecha" type="date" style="position:absolute;opacity:0;pointer-events:none;width:1px;height:1px">
-    </div>
+    <input id="fecha" type="date" required>
     <label for="hora">Hora</label>
     <input id="hora" type="time">
     <button id="terminar">ENVIAR SOLICITUD POR WHATSAPP</button>
@@ -72,15 +69,15 @@ const metodos={transferencia:"Transferencia",debito:"Débito",credito:"Crédito"
 const p=new URLSearchParams(location.search);
 const servicio=p.get("servicio")||"";
 const metodo=p.get("metodo")||"";
-document.getElementById("detalle").textContent=(datos[servicio]?.nombre||"Servicio")+" · "+(datos[servicio]?.precio||"")+" · Pago en el local"+(metodos[metodo]?" · "+metodos[metodo]:"");
+document.getElementById("detalle").textContent=(datos[servicio]?.nombre||"Servicio")+" · "+(datos[servicio]?.precio||"")+" · Medio de pago"+(metodos[metodo]?" · "+metodos[metodo]:"");
 
 async function finalizar(){
   const nombre=document.getElementById("nombre").value.trim();
   const fecha=document.getElementById("fecha").value;
   const hora=document.getElementById("hora").value;
-  if(!nombre){document.getElementById("nombre").focus();return;}
-  if(!fecha){document.getElementById("fecha").focus();return;}
-  if(!hora){document.getElementById("hora").focus();return;}
+  if(!nombre){alert("Escribí tu nombre.");document.getElementById("nombre").focus();return;}
+  if(!fecha){alert("Elegí una fecha para tu cita.");document.getElementById("fecha").focus();return;}
+  if(!hora){alert("Elegí una hora para tu cita.");document.getElementById("hora").focus();return;}
   const d=datos[servicio];
   const m=metodos[metodo];
   if(!d||!m){alert("No se pudo identificar el servicio o método de pago.");return;}
@@ -89,11 +86,7 @@ async function finalizar(){
   window.location.href="https://wa.me/59899017238?text="+encodeURIComponent(mensaje);
 }
 const fechaInput=document.getElementById("fecha");
-const fechaVisible=document.getElementById("fechaVisible");
-fechaInput.min=new Intl.DateTimeFormat("en-CA",{timeZone:"America/Montevideo"}).format(new Date());
-function mostrarFecha(){if(!fechaInput.value){fechaVisible.textContent="dd/mm";return}const [y,m,d]=fechaInput.value.split("-");fechaVisible.textContent=d+"/"+m}
-fechaVisible.addEventListener("click",()=>{if(fechaInput.showPicker)fechaInput.showPicker();else fechaInput.click()});
-fechaInput.addEventListener("change",mostrarFecha);
+
 document.getElementById("terminar").addEventListener("click",finalizar);
 document.getElementById("nombre").addEventListener("keydown",(e)=>{if(e.key==="Enter"){e.preventDefault();finalizar();}});
 </script>
