@@ -38,7 +38,7 @@ button:hover{background:#f0cf5a}.mensaje{display:none;margin-top:25px}.corazon{f
     <input id="fecha" type="date" required>
     <label for="hora">Hora</label>
     <input id="hora" type="time">
-    <button id="terminar">ENVIAR SOLICITUD POR WHATSAPP</button>
+    <div id="mp-instrucciones" style="display:none"><p class="detalle">Primero abrí Mercado Pago para realizar el pago. Después volvé acá y enviá la solicitud por WhatsApp. El local confirmará el pago y la disponibilidad de la cita.</p><a id="mp-link" href="https://link.mercadopago.com.uy/zorr" target="_blank" rel="noopener noreferrer" style="display:block;padding:15px;background:#d4af37;color:#000;border-radius:25px;font-weight:bold;text-decoration:none">💳 ABRIR MERCADO PAGO</a><p class="detalle" style="margin-top:12px">El importe del enlace puede no coincidir con el precio mostrado. Verificá el monto antes de pagar.</p></div><button id="terminar">ENVIAR SOLICITUD POR WHATSAPP</button>
   </div>
   <a class="volver" href="Citas.html">← Volver a servicios</a>
 </div>
@@ -69,6 +69,7 @@ const metodos={transferencia:"Transferencia",debito:"Débito",credito:"Crédito"
 const p=new URLSearchParams(location.search);
 const servicio=p.get("servicio")||"";
 const metodo=p.get("metodo")||"";
+if(metodo==="mercadopago"){document.getElementById("mp-instrucciones").style.display="block";}
 document.getElementById("detalle").textContent=(datos[servicio]?.nombre||"Servicio")+" · "+(datos[servicio]?.precio||"")+" · Medio de pago"+(metodos[metodo]?" · "+metodos[metodo]:"");
 
 async function finalizar(){
