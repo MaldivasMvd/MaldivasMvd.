@@ -58,7 +58,7 @@
 
       <div class="columna">
         <h2>🌐 POR WEB</h2>
-        <a href="https://link.mercadopago.com.uy/zorr" target="_blank" rel="noopener noreferrer" class="pago mercadopago mercadopago">🟡 MERCADO PAGO</a>
+        <a id="web-mercadopago" href="#" class="pago mercadopago">🟡 MERCADO PAGO</a>
       </div>
     </div>
 
@@ -85,7 +85,7 @@
 "pierna":{nombre:"Depilación · Pierna entera",precio:"$450"},
 "cavado":{nombre:"Depilación · Cavado",precio:"$290"},
 "cavado-completo":{nombre:"Cavado completo con tira",precio:"$450"},
-"cuerpo-entero":{nombre:"Súper promo cuerpo entero",precio:""bozo":{nombre:"Depilación de bozo",precio:"$200"}.290"},
+"cuerpo-entero":{nombre:"Súper promo cuerpo entero",precio:"$1.290"},
 "perfilado":{nombre:"Perfilado de cejas",precio:"$490"}
     };
 
@@ -98,6 +98,7 @@
       enlace.href = "AgendarLocal.html?servicio=" + encodeURIComponent(servicio || "") + "&metodo=" + encodeURIComponent(metodo);
     });
 
+    document.getElementById("web-mercadopago").href="AgendarLocal.html?servicio="+encodeURIComponent(servicio||"")+"&metodo=mercadopago";
     if (datos[servicio]) {
       document.getElementById("servicio").textContent = datos[servicio].nombre;
       document.getElementById("precio").textContent = datos[servicio].precio;
